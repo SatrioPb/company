@@ -9,13 +9,14 @@ $deskripsi = $_POST['deskripsi'];
 $jumlah = $_POST['jumlah'];
 $harga = $_POST['harga'];
 
+
 // Buat masukkin/mengirim data ke database
-$sql = "INSERT INTO barang (kd_barang, nm_barang,deskripsi, jumlah, harga) VALUES ('$kd_barang', '$nm_barang','$deskripsi', '$jumlah','$harga')";
+$sql = "INSERT INTO barang (kd_barang, nm_barang,deskripsi, jumlah, harga, foto) VALUES ('$kd_barang', '$nm_barang','$deskripsi', '$jumlah','$harga','$foto')";
 //Coba perhatikan kode di atas baik-baik, ini statement untuk memasukkan data ke dalam tabel dari matkul basis data
 
 
 if (mysqli_query($koneksi, $sql)) {
-    header("Location: tables.php"); // perintah untuk kembali ke index.php kalau data berhasil tersimpan ke database
+    header("Location: dashboard.php"); // perintah untuk kembali ke index.php kalau data berhasil tersimpan ke database
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($koneksi); // perintah untuk menampilkan pesan error kalau data gagal tersimpan
 }

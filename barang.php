@@ -111,14 +111,6 @@ include "connect.php";
                             <a href="beli.php?kd_barang='<?= $data['kd_barang']; ?>'" class="btn btn-primary"><?php echo $data['harga']; ?></a>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
                 <?php } ?>
             </div>
 

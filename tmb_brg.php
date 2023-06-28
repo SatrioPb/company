@@ -9,11 +9,8 @@ if (!isset($_SESSION['loggedin'])) {
   exit;
 }
 ?>
-
 <?php
 include "connect.php";
-$barang = $koneksi->query("SELECT COUNT(kd_barang) FROM barang");
-$totalbarang = $barang->fetch_row()[0];
 ?>
 
 <!DOCTYPE html>
@@ -82,12 +79,12 @@ $totalbarang = $barang->fetch_row()[0];
             <h6 class="collapse-header">Login Screens:</h6>
             <a class="collapse-item" href="tmb_brg.php">Tambah Barang</a>
             <a class="collapse-item" href="hapus.php">Action Barang</a>
-
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Charts -->
+
 
       <!-- Nav Item - Tables -->
 
@@ -116,11 +113,11 @@ $totalbarang = $barang->fetch_row()[0];
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="cari.php" method="get">
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" name="cari" id="cari" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2 " />
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button" value="cari">
+                <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -138,7 +135,7 @@ $totalbarang = $barang->fetch_row()[0];
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." />
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -165,11 +162,18 @@ $totalbarang = $barang->fetch_row()[0];
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="profile.php">
+                <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-             
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -190,135 +194,116 @@ $totalbarang = $barang->fetch_row()[0];
           </div>
 
           <!-- Content Row -->
-          <div class="row">
+          <div class="container-fluid">
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Data Barang</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"> <?php
-                                                                            echo "<h2>$totalbarang</h2>";
-                                                                            ?></div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Tambah barang</h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+
+
+                  <div class="body">
+
+                    <form action="inputbrg.php" method="POST">
+
+                      <label for="">Kode Barang</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <input type="text" name="kd_barang" class="form-control form-control-user" id="kd_barang" aria-describedby="emailHelp" required />
+                        </div>
+                      </div>
+
+                      <label for="">Nama Barang</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <input type="text" name="nm_barang" class="form-control form-control-user" id="nm_barang" aria-describedby="emailHelp" required />
+                        </div>
+                      </div>
+
+                      <label for="">Deskripsi Barang</label>
+                      <div class="form-group">
+                        <div class="form-line">
+                          <input type="text" name="deskripsi" class="form-control form-control-user" id="deskripsi" aria-describedby="emailHelp" required " />
+							</div>
+						</div>
+
+                          	<label for="">Jumlah Barang</label>
+						<div class=" form-group">
+                          <div class="form-line">
+                            <input type="text" name="jumlah" class="form-control form-control-user" id="jumlah" aria-describedby="emailHelp" required " />
+							</div>
+						</div>
+
+                        	<label for="">Harga Barang</label>
+						<div class=" form-group">
+                            <div class="form-line">
+                              <input type="text" name="harga" class="form-control form-control-user" id="harga" aria-describedby="emailHelp" required />
+                            </div>
+                          </div>
+
+
+
+                          <input type="submit" value="Tambah" class="btn btn-primary btn-user btn-block">
+
+
+
+                    </form>
+
+                  </div>
+                  <!-- /.container-fluid -->
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+
+                <!-- End of Footer -->
+              </div>
+              <!-- End of Content Wrapper -->
+            </div>
+            <!-- End of Page Wrapper -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+              <i class="fas fa-angle-up"></i>
+            </a>
+
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- Bootstrap core JavaScript-->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+            <!-- Core plugin JavaScript-->
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+            <!-- Custom scripts for all pages-->
+            <script src="js/sb-admin-2.min.js"></script>
 
-            <!-- Content Row -->
+            <!-- Page level plugins -->
+            <script src="vendor/chart.js/Chart.min.js"></script>
 
-
-            <!-- Approach -->
-
-          </div>
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Kode Barang</th>
-                      <th>Nama Barang</th>
-                      <th>deskripsi</th>
-                      <th>Jumlah</th>
-                      <th>Harga</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <?php
-
-                      ?>
-                      <?php
-                      $query = ("SELECT * FROM barang");
-                      $result = mysqli_query($koneksi, $query);
-                      ?>
-                      <?php while ($data = mysqli_fetch_assoc($result)) {
-                      ?>
-
-                    <tr>
-                      <td><?php echo $data['kd_barang']; ?></td>
-                      <td><?php echo $data['nm_barang']; ?></td>
-                      <td><?php echo $data['deskripsi']; ?></td>
-                      <td><?php echo $data['jumlah']; ?></td>
-                      <td> Rp <?php echo $data['harga']; ?></td>
-                    </tr>
-
-
-                  <?php } ?>
-
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /.container-fluid -->
-    </div>
-    <!-- End of Main Content -->
-
-    <!-- Footer -->
-
-    <!-- End of Footer -->
-  </div>
-  <!-- End of Content Wrapper -->
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="logout.php">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+            <!-- Page level custom scripts -->
+            <script src="js/demo/chart-area-demo.js"></script>
+            <script src="js/demo/chart-pie-demo.js"></script>
 </body>
 
 </html>
