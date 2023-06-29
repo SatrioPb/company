@@ -72,7 +72,7 @@ $data = mysqli_fetch_array($result)
                 <tr>
                     <div class="old">
                         <div class="card" style="width: 22em;">
-                            <img src="img/plaf.jpg" class="card-img-top" alt="...">
+                            <img src="foto/<?php echo $data['foto']; ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $data['nm_barang']; ?></h5>
                                 <p class="card-text"><?php echo $data['jumlah']; ?></p>

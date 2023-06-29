@@ -203,7 +203,7 @@ include "connect.php";
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-
+                                            <th>foto</th>
                                             <th>Kode Barang</th>
                                             <th>Nama Barang</th>
                                             <th>Deskripsi</th>
@@ -226,7 +226,7 @@ include "connect.php";
                                             ?>
 
                                         <tr>
-
+                                            <td><img src="foto/<?php echo $data['foto']; ?>" width="150" height="120"></td>
                                             <td><?php echo $data['kd_barang']; ?></td>
                                             <td><?php echo $data['nm_barang']; ?></td>
                                             <td><?php echo $data['deskripsi']; ?></td>

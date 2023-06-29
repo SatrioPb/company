@@ -9,6 +9,17 @@ $deskripsi = $_POST['deskripsi'];
 $jumlah = $_POST['jumlah'];
 $harga = $_POST['harga'];
 
+//upload gambar
+$foto = $_FILES['foto']['name'];
+$file_tmp = $_FILES['foto']['tmp_name'];
+$nama = $_POST['nama'];
+move_uploaded_file($file_tmp, 'foto/' . $foto);
+$query = "INSERT INTO barang SET foto = '$foto'";
+
+//cek file gambar
+
+
+
 
 // Buat masukkin/mengirim data ke database
 $sql = "INSERT INTO barang (kd_barang, nm_barang,deskripsi, jumlah, harga, foto) VALUES ('$kd_barang', '$nm_barang','$deskripsi', '$jumlah','$harga','$foto')";

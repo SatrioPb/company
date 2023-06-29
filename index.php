@@ -1,3 +1,6 @@
+<?php
+include "connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,77 +122,45 @@
 
   <!-- Galery -->
   <section id="portfolio" class="row g-0 py-0">
-    <div class="col-lg-4 col-sm-6">
-      <div class="portfolio-item">
-        <img src="img/plaf2.jpg" alt="" />
-        <div class="portfolio-overlay">
-          <div>
-            <h3>Project plafon 1</h3>
-            <h6>hasil pemasangan Ditya Plafon PVC</h6>
+    <?php
+    $query = "SELECT * FROM barang";
+    $result = mysqli_query($koneksi, $query);
+    $count = 0;
+
+    for ($i = 0; $i < 3; $i++) {
+      if ($data = mysqli_fetch_assoc($result)) {
+        $count++;
+    ?>
+        <div class="col-lg-4 col-sm-6">
+          <div class="portfolio-item">
+            <img src="foto/<?php echo $data['foto']; ?>" width="500" height="450">
+            <div class="portfolio-overlay">
+              <div>
+                <h3><?php echo $data['nm_barang']; ?></h3>
+                <h6><?php echo $data['deskripsi']; ?></h6>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6">
-      <div class="portfolio-item">
-        <img src="img/plaf3.jpg" alt="" />
-        <div class="portfolio-overlay">
-          <div>
-            <h3>Project plafon 2</h3>
-            <h6>hasil pemasangan Ditya Plafon PVC</h6>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6">
-      <div class="portfolio-item">
-        <img src="img/plaf4.jpg" alt="" />
-        <div class="portfolio-overlay">
-          <div>
-            <h3>Project plafon 3</h3>
-            <h6>hasil pemasangan Ditya Plafon PVC</h6>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6">
-      <div class="portfolio-item">
-        <img src="img/plaf5.jpg" alt="" />
-        <div class="portfolio-overlay">
-          <div>
-            <h3>Project plafon 4</h3>
-            <h6>hasil pemasangan Ditya Plafon PVC</h6>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6">
-      <div class="portfolio-item">
-        <img src="img/plaf6.jpg" alt="" />
-        <div class="portfolio-overlay">
-          <div>
-            <h3>Project plafon 5</h3>
-            <h6>hasil pemasangan Ditya Plafon PVC</h6>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6">
-      <div class="portfolio-item">
-        <img src="img/plaf7.jpg" alt="" />
-        <div class="portfolio-overlay">
-          <div>
-            <h3>Project plafon 6</h3>
-            <h6>hasil pemasangan Ditya Plafon PVC</h6>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php
+      } else {
+        break; // Berhenti jika sudah tidak ada data lagi
+      }
+    }
+    ?>
+
   </section>
   <!-- Akhir Galery -->
-
+  <br>
+  <br>
+  <br>
+  <center>
+    <a href="barang.php" class="btn btn-brand">Show More</a>
+  </center>
   <!-- Fitur -->
   <section id="features">
+
+
     <div class="container">
       <div class="row">
         <div class="col-12 section-intro">

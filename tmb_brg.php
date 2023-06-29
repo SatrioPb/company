@@ -166,14 +166,6 @@ include "connect.php";
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -206,7 +198,7 @@ include "connect.php";
 
                   <div class="body">
 
-                    <form action="inputbrg.php" method="POST">
+                    <form action="inputbrg.php" method="POST" enctype="multipart/form-data">
 
                       <label for="">Kode Barang</label>
                       <div class="form-group">
@@ -226,24 +218,29 @@ include "connect.php";
                       <div class="form-group">
                         <div class="form-line">
                           <input type="text" name="deskripsi" class="form-control form-control-user" id="deskripsi" aria-describedby="emailHelp" required " />
-							</div>
-						</div>
+							          </div>
+						            </div>
 
                           	<label for="">Jumlah Barang</label>
-						<div class=" form-group">
+						              <div class=" form-group">
                           <div class="form-line">
                             <input type="text" name="jumlah" class="form-control form-control-user" id="jumlah" aria-describedby="emailHelp" required " />
-							</div>
-						</div>
+							            </div>
+						                  </div>
 
                         	<label for="">Harga Barang</label>
-						<div class=" form-group">
+						              <div class=" form-group">
                             <div class="form-line">
                               <input type="text" name="harga" class="form-control form-control-user" id="harga" aria-describedby="emailHelp" required />
                             </div>
                           </div>
 
-
+                          <label for="">Foto</label>
+                          <div class="form-group">
+                            <div class="form-line">
+                              <input type="file" name="foto" class="form-control form-control-user" id="foto" aria-describedby="emailHelp" required />
+                            </div>
+                          </div>
 
                           <input type="submit" value="Tambah" class="btn btn-primary btn-user btn-block">
 
