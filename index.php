@@ -11,6 +11,7 @@ include "connect.php";
 
   <!-- Bootstrap CSS -->
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/boxicons.min.css" />
   <link rel="stylesheet" href="css/style.css" />
@@ -46,7 +47,8 @@ include "connect.php";
             <a class=" nav-link" href="#contact">Kontak</a>
 
           </li>
-        </ul>
+
+
       </div>
     </div>
   </nav>

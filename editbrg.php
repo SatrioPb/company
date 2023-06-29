@@ -285,7 +285,7 @@ $data = mysqli_fetch_array($result);
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-  
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -317,51 +317,56 @@ $data = mysqli_fetch_array($result);
 
 
                                     <div class="body">
+                                        <form action="edit.php?no=<?= $data['no'] ?>" method="POST" enctype="multipart/form-data">
 
-                                        <form action="edit.php?no=<?= $data['no'] ?>" method="POST">
-
-
-                                            <label for="">Kode Barang</label>
+                                            <label for="kd_barang">Kode Barang</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" name="kd_barang" maxlength="128" size="50" value="<?php echo $data['kd_barang'] ?>" />
+                                                    <input type="text" name="kd_barang" id="kd_barang" maxlength="128" size="50" value="<?= $data['kd_barang'] ?>" />
                                                 </div>
                                             </div>
 
-                                            <label for="">Nama Barang</label>
+                                            <label for="nm_barang">Nama Barang</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" name="nm_barang" maxlength="128" size="50" value="<?php echo $data['nm_barang'] ?>" />
+                                                    <input type="text" name="nm_barang" id="nm_barang" maxlength="128" size="50" value="<?= $data['nm_barang'] ?>" />
                                                 </div>
                                             </div>
 
-                                            <label for="">Deskripsi Barang</label>
+                                            <label for="deskripsi">Deskripsi Barang</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" name="deskripsi" maxlength="128" size="50" value="<?php echo $data['deskripsi'] ?>" />
+                                                    <input type="text" name="deskripsi" id="deskripsi" maxlength="128" size="50" value="<?= $data['deskripsi'] ?>" />
                                                 </div>
                                             </div>
 
-                                            <label for="">Jumlah Barang</label>
-                                            <div class=" form-group">
+                                            <label for="jumlah">Jumlah Barang</label>
+                                            <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" name="jumlah" maxlength="128" size="50" value="<?php echo $data['jumlah'] ?>" />
+                                                    <input type="text" name="jumlah" id="jumlah" maxlength="128" size="50" value="<?= $data['jumlah'] ?>" />
                                                 </div>
                                             </div>
 
-                                            <label for="">Harga Barang</label>
-                                            <div class=" form-group">
+                                            <label for="harga">Harga Barang</label>
+                                            <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" name="harga" maxlength="128" size="50" value="<?php echo $data['harga'] ?>" />
+                                                    <input type="text" name="harga" id="harga" maxlength="128" size="50" value="<?= $data['harga'] ?>" />
                                                 </div>
                                             </div>
 
+                                            <label for="foto">Foto</label>
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="file" name="foto" id="foto" />
+                                                </div>
+                                            </div>
 
-                                            <input type="submit" name="Edit" value="Edit" />&nbsp;<input type="reset" value="Reset">
-
-
+                                            <input type="submit" name="Edit" value="Edit" />&nbsp;
+                                            <input type="reset" value="Reset">
 
                                         </form>
+
+
 
                                     </div>
                                     <!-- /.container-fluid -->

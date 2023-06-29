@@ -25,13 +25,17 @@ include "connect.php"
 <body>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
+            <a href="dashboard.php">
+                <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
+            </a>
+
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>foto</th>
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
                             <th>deskripsi</th>
@@ -53,6 +57,7 @@ include "connect.php"
                             ?>
 
                         <tr>
+                            <td><img src="foto/<?php echo $data['foto']; ?>" width="150" height="120"></td>
                             <td><?php echo $data['kd_barang']; ?></td>
                             <td><?php echo $data['nm_barang']; ?></td>
                             <td><?php echo $data['deskripsi']; ?></td>
