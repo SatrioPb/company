@@ -140,7 +140,7 @@ include "connect.php";
 
 
                     <div class="card" style="width: 22em; margin-bottom: 50px; ">
-                        <img src="foto/<?php echo $data['foto']; ?>" width="354" height="300">
+                        <img src="foto/<?php echo $data['foto']; ?>" width="351" height="300">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $data['nm_barang']; ?></h5>
                             <p class="card-text"><?php echo $data['deskripsi']; ?></p>
