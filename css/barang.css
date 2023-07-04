@@ -99,3 +99,8 @@ section {
 #cta {
   background-color: #162e6e;
 }
+.btn-brand {
+  background-color: #162e6e;
+  color: #fff;
+  z-index: 1;
+}
