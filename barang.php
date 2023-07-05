@@ -51,24 +51,15 @@ include "connect.php";
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="img/plaf.jpg" class="d-block w-100" alt="..." />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>The Beatles</h5>
-                    <p>The Beatles adalah kelompok pemusik Inggris beraliran rock, dibentuk di Liverpool pada tahun 1960, sering kali dianggap sebagai pemusik tersukses secara komersial dan paling banyak mendapat pujian dalam musik populer.</p>
-                </div>
+               
             </div>
             <div class="carousel-item">
                 <img src="img/plaf.jpg" class="d-block w-100" alt="..." />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>The Beatles</h5>
-                    <p>The Beatles adalah kelompok pemusik Inggris beraliran rock, dibentuk di Liverpool pada tahun 1960, sering kali dianggap sebagai pemusik tersukses secara komersial dan paling banyak mendapat pujian dalam musik populer.</p>
-                </div>
+              
             </div>
             <div class="carousel-item">
                 <img src="img/plaf.jpg" class="d-block w-100" alt="..." />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>The Beatles</h5>
-                    <p>The Beatles adalah kelompok pemusik Inggris beraliran rock, dibentuk di Liverpool pada tahun 1960, sering kali dianggap sebagai pemusik tersukses secara komersial dan paling banyak mendapat pujian dalam musik populer.</p>
-                </div>
+               
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -89,9 +80,7 @@ include "connect.php";
         <tr>
 
             <div class="old flex-wrap">
-                <?php
-
-                ?>
+                
                 <?php
                 $query = ("SELECT * FROM barang");
                 $result = mysqli_query($koneksi, $query);
@@ -99,16 +88,18 @@ include "connect.php";
                 <?php while ($data = mysqli_fetch_assoc($result)) {
                 ?>
 
-
-                    <div class="card" style="width: 22em; margin-bottom: 50px; ">
-                        <img src="foto/<?php echo $data['foto']; ?>" width="351" height="300">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $data['nm_barang']; ?></h5>
-                            <p class="card-text"><?php echo $data['deskripsi']; ?></p>
-                            <p class="card-text">Stock : <?php echo $data['jumlah']; ?></p>
-                            <a href="beli.php?kd_barang='<?= $data['kd_barang']; ?>'" class="btn btn-primary">Rp <?php echo $data['harga']; ?></a>
+                    <a href="beli.php?no='<?= $data['no']; ?>'" style="text-decoration: none; color :black">
+                        <div class="card" style="width: 22em; margin-bottom: 50px; ">
+                            <img src="foto/<?php echo $data['foto']; ?>" width="351" height="300">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $data['nm_barang']; ?></h5>
+                                <p class="card-text"><?php echo $data['deskripsi']; ?></p>
+                                <p class="card-text">Stock : <?php echo $data['jumlah']; ?></p>
+                                <p>Rp <?php echo $data['harga']; ?></p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
                 <?php } ?>
             </div>
 

@@ -1,4 +1,6 @@
 <?php
+include 'connect.php';
+
 $kota_asal = $_POST['kota_asal'];
 $kota_tujuan = $_POST['kota_tujuan'];
 $kurir = $_POST['kurir'];
@@ -29,7 +31,12 @@ $provinsiasal = $data['rajaongkir']['origin_details']['province'];
 $kotatujuan = $data['rajaongkir']['destination_details']['city_name'];
 $provinsitujuan = $data['rajaongkir']['destination_details']['province'];
 $berat = $data['rajaongkir']['query']['weight'] / 1000;
+
+// Harga Barang
+$harga_barang = $_POST['harga_barang']; // Ganti dengan harga barang sesuai logika aplikasi Anda
+
 ?>
+
 <div class="panel panel-default">
     <div class="panel-body">
         <table width="100%">
@@ -56,13 +63,11 @@ $berat = $data['rajaongkir']['query']['weight'] / 1000;
                     <th>Nama Layanan</th>
                     <th>Tarif</th>
                     <th>ETD(Estimates Days)</th>
+                    <th>Total Harga</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                foreach ($data['rajaongkir']['results'][0]['costs'] as $value)
-                    echo "<tr>";
-                echo "<td>" . $value['service'] . "</td>";
                 foreach ($data['rajaongkir']['results'][0]['costs'] as $value) {
                     echo "<tr>";
                     echo "<td>" . $value['service'] . "</td>";
@@ -70,6 +75,9 @@ $berat = $data['rajaongkir']['query']['weight'] / 1000;
                         echo "<td align='right'>Rp " .
                             number_format($tarif['value'], 2, ',', '.') . "</td>";
                         echo "<td>" . $tarif['etd'] . " D</td>";
+                        $total_harga = $harga_barang + $tarif['value'];
+                        echo "<td align='right'>Rp " .
+                            number_format($total_harga, 2, ',', '.') . "</td>";
                     }
                     echo "</tr>";
                 }

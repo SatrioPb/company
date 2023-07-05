@@ -1,8 +1,8 @@
 <?php
 include "connect.php";
-if (isset($_GET['kd_barang'])) {
-    $kd_barang = $_GET['kd_barang'];
-    echo "Received ID: " . $kd_barang;
+if (isset($_GET['no'])) {
+    $no = $_GET['no'];
+    echo "Received ID: " . $no;
 } else {
     $errorMessage = mysqli_error($koneksi);
 
@@ -10,9 +10,9 @@ if (isset($_GET['kd_barang'])) {
     echo "Error: " . $errorMessage;
 }
 
-$query = "SELECT * FROM barang WHERE kd_barang=$kd_barang";
+$query = "SELECT * FROM barang WHERE no =$no ";
 $result = mysqli_query($koneksi, $query);
-$data = mysqli_fetch_array($result)
+$data = mysqli_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +73,9 @@ $data = mysqli_fetch_array($result)
                                 <h5 class="card-title"><?php echo $data['nm_barang']; ?></h5>
                                 <p class="card-text"><?php echo $data['deskripsi']; ?></p>
                                 <p class="card-text">Stock : <?php echo $data['jumlah']; ?></p>
-                                <a href="beli.php?kd_barang='<?= $data['kd_barang']; ?>'" class="btn btn-primary">Rp <?php echo $data['harga']; ?></a>
+                                <p>Rp <?php echo $data['harga']; ?></p>
+                                <a href="ongkir.php?no=<?= $data['no']; ?>" class="btn btn-brand cek-ongkir" style="background-color: #162e6e; color: #fff; z-index: 1;">Cek Ongkir</a>
+
                             </div>
                         </div>
 
@@ -82,10 +84,6 @@ $data = mysqli_fetch_array($result)
                 <br>
                 <br>
             </div>
-
-            <center>
-                <a href="ongkir.php" class="btn btn-brand" style="background-color: #162e6e; color: #fff; z-index: 1;">Cek Ongkir</a>
-            </center>
         </div>
     </div>
     <br>
